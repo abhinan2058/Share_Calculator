@@ -1,0 +1,65 @@
+#test{
+    width:630px;
+    height:45px;
+}
+
+
+
+
+
+body{
+    background-color: #a9a9a9;
+
+}
+
+.main{
+    width:80%;
+    margin:50px auto auto auto;
+    background-color: #d9d9d9;
+    border: 1px solid black;
+}
+
+
+h2{
+    margin-left:2%;
+}
+#separator_line{
+    width:96%;
+    margin-left: 2%;
+    border: 0.5px solid black;
+}
+
+#internal_main{
+    display:flex;
+    padding: 2%;
+    
+}
+
+
+#entry{
+    margin-right: 180px;
+    
+   
+}
+
+#entry #type,#quantity,#price{
+    width: 350px;
+    height: 30px;
+    /* outline: none; */
+    border: none;
+}
+#type{
+    background-color: #929090;
+}
+
+#entry button{
+    background-color: orange;
+    color: white;
+    /* border: none; */
+    padding: 5px;
+}
+
+#result{
+    margin-left: 0px;
+   
+}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Stock Calculator</title>
+</head>
+
+<body>
+    <div class="main">
+        <h2>Stock Calculator</h2>
+        <div id="separator_line"></div>
+        <br>
+        <div id="internal_main">
+            <div id="entry">
+                <label for="transaction_type">Transaction Type</label> <br>
+                <select name="type" id="type">
+                    <option value="buy">Buy</option>
+                    <option value="sell">Sell</option>
+                </select>
+                <br><br>
+                <label for="share-qunatity">Share Quantity</label><br>
+                <input type="number" id="quantity" name="quantity" placeholder="Numeber Only" required>
+                <br><br>
+                <label for="purchase_price">Purchase Price (Rs)</label><br>
+                <input type="number" id="price" name="price" placeholder="Numeber Only" required>
+                <br><br>
+                <button>Calculate</button>
+                <button>Clear</button>
+            </div>
+
+            <div id="result">
+                <label for="details">Details:</label>
+                <table border="1">
+                    <tr>
+                        <td>Total Amount</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>* Commission</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>SEBON FEE</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>DP Charge</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Total Amount Payable (Rs)</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Cost Price Per Share</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">* Commission Amount includes NEPSE Commission Rs- & SEBON Regularity Fee Rs-</td>
+                        
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <input type="text" id="test">
+</body>
+
+</html>
