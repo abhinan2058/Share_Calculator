@@ -15,59 +15,126 @@
         <br>
         <div id="internal_main">
             <div id="entry">
-                <label for="transaction_type">Transaction Type</label> <br>
-                <select name="type" id="type">
-                    <option value="buy">Buy</option>
-                    <option value="sell">Sell</option>
-                </select>
-                <br><br>
-                <label for="share-qunatity">Share Quantity</label><br>
-                <input type="number" id="quantity" name="quantity" placeholder="Numeber Only" required>
-                <br><br>
-                <label for="purchase_price">Purchase Price (Rs)</label><br>
-                <input type="number" id="price" name="price" placeholder="Numeber Only" required>
-                <br><br>
-                <button>Calculate</button>
-                <button>Clear</button>
+                
+
+                    <label for="transaction_type">Transaction Type</label> <br>
+                    <select name="type" id="type">
+                        <option value="buy">Buy</option>
+                        <option value="sell">Sell</option>
+                    </select>
+                    <br><br>
+                    <label for="share-quantity">Share Quantity</label><br>
+                    <input type="number" id="quantity" name="quantity" placeholder="Number Only" required>
+                    <br><br>
+                    <label for="purchase_price">Purchase Price (Rs)</label><br>
+                    <input type="number" id="price" name="price" placeholder="Number Only" required>
+                    <br><br>
+                    <button onclick="calculate()">Calculate</button>
+                    <button onclick="Clear()">Clear</button>
+    
+               
             </div>
+
+           
 
             <div id="result">
                 <label for="details">Details:</label>
                 <table border="1">
                     <tr>
                         <td>Total Amount</td>
-                        <td></td>
+                        <td  id="totalAmount"></td>
                     </tr>
                     <tr>
                         <td>* Commission</td>
-                        <td></td>
+                        <td id="commission"></td>
                     </tr>
                     <tr>
                         <td>SEBON FEE</td>
-                        <td></td>
+                        <td id="sebon"></td>
                     </tr>
                     <tr>
                         <td>DP Charge</td>
-                        <td></td>
+                        <td id="dp"></td>
                     </tr>
                     <tr>
                         <td>Total Amount Payable (Rs)</td>
-                        <td></td>
+                        <td id="amount"></td>
                     </tr>
                     <tr>
                         <td>Cost Price Per Share</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">* Commission Amount includes NEPSE Commission Rs- & SEBON Regularity Fee Rs-</td>
-                        
+                        <td id="cost"></td>
                     </tr>
                 </table>
             </div>
         </div>
     </div>
 
-    <input type="text" id="test">
+    <script>
+    function calculate(){
+        //getting data
+    let qty = parseFloat(document.getElementById("quantity").value);
+    let price = parseFloat(document.getElementById("price").value) ;
+
+
+    //finding total Amount
+    let total = (qty*price);
+    totalAmount.textContent = total;
+
+
+    //finding Commission
+    if(total <=50000)
+    {
+        comm=0.04*total;
+    }
+    else if( total>50000 && total <=500000){
+        comm=0.037*total;
+    }
+    else if( total>500000 && total <=2000000){
+        comm=0.034*total;
+    }
+    else if( total>2000000 && total <=10000000){
+        comm=0.03*total;
+    }
+    else {
+        comm=0.027*total;
+    }
+
+    commission.textContent=comm;
+
+    // let com = parseFloat(document.getElementById("commission").value);
+    const dpfee= parseFloat(25);
+
+
+    
+
+let sebonFee = 0.0015*total;
+sebon.textContent= sebonFee;
+
+    dp.textContent=dpfee;
+    // let pay = `${total + com + fee}`;
+    let tot = dpfee + total + comm + sebonFee;
+    amount.textContent=tot;
+
+    let costPerShare = tot/qty;
+    cost.textContent = costPerShare;
+    
+
+
+} 
+function Clear(){
+    document.getElementById("price").value ="";
+    document.getElementById("quantity").value ="";
+    // var i = document.getElementById("price");
+    // i.value="";
+    // quantity.textContent="";
+    // price.textContent="";
+}
+   
+
+    </script>
+    
 </body>
+
+
 
 </html>
