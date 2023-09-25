@@ -42,7 +42,7 @@ h2{
    
 }
 
-#entry #type,#quantity,#price{
+#entry #type,#quantity,#price,#sellingPrice{
     width: 350px;
     height: 30px;
     /* outline: none; */
@@ -65,4 +65,13 @@ h2{
 }
 td{
     width: 200px;
+}
+
+#buyPrice{
+    width: 180px;
+    height: 30px;
+}
+
+#wacc{
+    margin-left: 6%;
 }

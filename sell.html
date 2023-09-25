@@ -19,16 +19,37 @@
 
                     <label for="transaction_type">Transaction Type</label> <br>
                     <select name="type" id="type" onchange="navigate()">
-                        <option  value="buy.html"> Buy </option>
+                        
                         <option  value="sell.html"> Sell  </option>
+                        <option  value="buy.html"> Buy </option>
                     </select>
                     <br><br>
                     <label for="share-quantity">Share Quantity</label><br>
                     <input type="number" id="quantity" name="quantity" placeholder="Number Only" required>
                     <br><br>
                     <label for="purchase_price">Purchase Price (Rs)</label><br>
-                    <input type="number" id="price" name="price" placeholder="Number Only" required>
+                    <input type="number" id="buyPrice" name="price" placeholder="Number Only" required >
+                    <input type="checkbox" id="wacc">
+                    <label for="Wacc">Is WACC Price ?</label>
                     <br><br>
+                    <label for="share-quantity">Selling Price (Rs)</label><br>
+                    <input type="number" id="sellingPrice" name="quantity" placeholder="Number Only" required>
+                    <br><br>
+                    <label for="transaction_type">Investor Type</label> <br>
+                    <select name="type" id="type" onchange="navigate()">
+                        <option  value="Individual"> Individual  </option>
+                        <option  value="Institutional"> Institutional </option>
+                    </select>
+                    <br>
+                    <br>
+                    <label for="transaction_type">Capital Gain Tax</label> <br>
+                    <select name="type" id="type" onchange="navigate()">
+                        
+                        <option  value="5">  5% </option>
+                        <option  value="7.5">  7.5%</option>
+                    </select>
+                    <br>
+                    <br>
                     <button onclick="calculate()">Calculate</button>
                     <button onclick="Clear()">Clear</button>
     
@@ -40,6 +61,10 @@
             <div id="result">
                 <label for="details">Details:</label>
                 <table border="1">
+                    <tr>
+                        <td>Investor Type</td>
+                        <td  id="investorType"></td>
+                    </tr>
                     <tr>
                         <td>Total Amount</td>
                         <td  id="totalAmount"></td>
@@ -57,12 +82,16 @@
                         <td id="dp"></td>
                     </tr>
                     <tr>
-                        <td>Total Amount Payable (Rs)</td>
+                        <td>Total Amount Receivable (Rs)</td>
                         <td id="amount"></td>
                     </tr>
                     <tr>
-                        <td>Cost Price Per Share</td>
-                        <td id="cost"></td>
+                        <td>Capital Gain Tax</td>
+                        <td id="cgt"></td>
+                    </tr>
+                    <tr>
+                        <td>Profit/Loss (Rs)</td>
+                        <td id="pl"></td>
                     </tr>
                 </table>
             </div>
@@ -71,56 +100,9 @@
 
     <script>
     function calculate(){
+    }
         //getting data
-    let qty = parseFloat(document.getElementById("quantity").value);
-    let price = parseFloat(document.getElementById("price").value) ;
-
-
-    //finding total Amount
-    let total = (qty*price);
-    totalAmount.textContent = total;
-
-
-    //finding Commission
-    if(total <=50000)
-    {
-        comm=0.04*total;
-    }
-    else if( total>50000 && total <=500000){
-        comm=0.037*total;
-    }
-    else if( total>500000 && total <=2000000){
-        comm=0.034*total;
-    }
-    else if( total>2000000 && total <=10000000){
-        comm=0.03*total;
-    }
-    else {
-        comm=0.027*total;
-    }
-
-    commission.textContent=comm;
-
-    // let com = parseFloat(document.getElementById("commission").value);
-    const dpfee= parseFloat(25);
-
-
     
-
-let sebonFee = 0.0015*total;
-sebon.textContent= sebonFee;
-
-    dp.textContent=dpfee;
-    // let pay = `${total + com + fee}`;
-    let tot = dpfee + total + comm + sebonFee;
-    amount.textContent=tot;
-
-    let costPerShare = tot/qty;
-    cost.textContent = costPerShare;
-    
-
-
-} 
 function Clear(){
     document.getElementById("price").value ="";
     document.getElementById("quantity").value ="";
@@ -129,7 +111,7 @@ function Clear(){
     // quantity.textContent="";
     // price.textContent="";
 }
-
+   
 function navigate(){
     var selectElement = document.getElementById("type");
             var selectedValue = selectElement.value;
@@ -140,7 +122,6 @@ function navigate(){
                 window.location.href = selectedValue;
             }
 }
-   
 
     </script>
     
