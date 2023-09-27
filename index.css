@@ -42,7 +42,7 @@ h2{
    
 }
 
-#entry #type,#quantity,#price,#sellingPrice{
+#entry #type,#quantity,#price,#sellingPrice, #inv, #capital{
     width: 350px;
     height: 30px;
     /* outline: none; */

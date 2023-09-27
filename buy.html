@@ -84,19 +84,19 @@
     //finding Commission
     if(total <=50000)
     {
-        comm=0.04*total;
+        comm=0.004*total;
     }
     else if( total>50000 && total <=500000){
-        comm=0.037*total;
+        comm=0.0037*total;
     }
     else if( total>500000 && total <=2000000){
-        comm=0.034*total;
+        comm=0.0034*total;
     }
     else if( total>2000000 && total <=10000000){
-        comm=0.03*total;
+        comm=0.003*total;
     }
     else {
-        comm=0.027*total;
+        comm=0.0027*total;
     }
 
     commission.textContent=comm;
@@ -107,7 +107,7 @@
 
     
 
-let sebonFee = 0.0015*total;
+let sebonFee = 0.00015*total;
 sebon.textContent= sebonFee;
 
     dp.textContent=dpfee;
