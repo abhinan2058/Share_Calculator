@@ -155,8 +155,19 @@
             const dpfee = parseFloat(25);
             dp.textContent = dpfee;
 
-            var costPerShareAfter = (total-comm-sebonFee-dpfee)/sq;
+            var costPerShareAfter = (total - comm - sebonFee - dpfee) / sq;
 
+
+            if (wacc.checked) {
+                let costPerShare = document.getElementById("buyPrice").value;
+                if (costPerShareAfter > costPerShare) {
+                    var capitaltax = capital * (costPerShareAfter - costPerShare) * sq / 100;
+                }
+
+
+                cgt.textContent = capitaltax;
+            }
+            else {
             //totalBuyingAmount
             var totalBuyingAmount = sq * pp;
             if (totalBuyingAmount <= 50000) {
@@ -181,13 +192,14 @@
 
             //calculating capital gain tax
             // var capitalGainTax = document.getElementById("capital").value;
-            if(costPerShareAfter > costPerShare)
-            {
-                var capitaltax =capital*(costPerShareAfter-costPerShare)*sq/100;
+            if (costPerShareAfter > costPerShare) {
+                var capitaltax = capital * (costPerShareAfter - costPerShare) * sq / 100;
             }
 
 
-            cgt.textContent=capitaltax;
+            cgt.textContent = capitaltax;
+        }
+            
         }
 
 
